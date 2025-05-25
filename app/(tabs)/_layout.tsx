@@ -1,10 +1,16 @@
 import TabBarIcon from "@/components/TabBarIcon";
 import { faBookmark, faHome } from "@fortawesome/free-solid-svg-icons";
+import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 import { Tabs } from "expo-router";
+
+const tabScreenOptions: BottomTabNavigationOptions = {
+  tabBarIconStyle: { color: "#052e14" },
+  tabBarActiveTintColor: "#22c55e",
+};
 
 const _Layout = () => {
   return (
-    <Tabs>
+    <Tabs screenOptions={tabScreenOptions}>
       <Tabs.Screen
         name="index"
         options={{
