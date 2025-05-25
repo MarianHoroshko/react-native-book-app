@@ -1,5 +1,5 @@
 import TabBarIcon from "@/components/TabBarIcon";
-import { faHome, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark, faHome } from "@fortawesome/free-solid-svg-icons";
 import { Tabs } from "expo-router";
 
 const _Layout = () => {
@@ -17,12 +17,12 @@ const _Layout = () => {
       />
 
       <Tabs.Screen
-        name="search"
+        name="saved"
         options={{
-          title: "Search",
+          title: "Saved",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon isFocused={focused} icon={faSearch} />
+            <TabBarIcon isFocused={focused} icon={faBookmark} />
           ),
         }}
       />
