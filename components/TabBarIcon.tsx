@@ -9,7 +9,11 @@ type TabBarIconProps = {
 const TabBarIcon = (props: TabBarIconProps) => {
   return (
     <>
-      <FontAwesomeIcon icon={props.icon} />
+      <FontAwesomeIcon
+        icon={props.icon}
+        size={18}
+        color={props.isFocused ? "blue" : "black"}
+      />
     </>
   );
 };
