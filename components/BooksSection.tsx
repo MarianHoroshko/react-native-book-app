@@ -1,24 +1,48 @@
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import useFetch from "@/hooks/useFetch";
+import { fetchBooksBySubject } from "@/services/api";
+import {
+  ActivityIndicator,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import BooksSectionItem from "./BooksSectionItem";
 
-const BookSection = (props: { listData: string[] }) => {
+const BookSection = (props: { subject: string }) => {
+  const { data, isLoading, error } = useFetch(() =>
+    fetchBooksBySubject(props.subject)
+  );
+
   return (
-    <View className="w-100 h-100 m-5">
-      <View className="flex-row justify-between">
-        <Text className="pb-3 text-2xl">Section</Text>
+    <>
+      {isLoading ? (
+        <ActivityIndicator size="large" />
+      ) : error ? (
+        <Text>{error.message}</Text>
+      ) : data !== null ? (
+        <View className="w-100 h-100 m-5">
+          <View className="flex-row justify-between">
+            <Text className="pb-3 text-2xl color-primary">
+              Books about: {props.subject}
+            </Text>
 
-        <TouchableOpacity>
-          <Text className="text-primary font-bold">Show more</Text>
-        </TouchableOpacity>
-      </View>
+            <TouchableOpacity>
+              <Text className="text-primary font-bold">Show more</Text>
+            </TouchableOpacity>
+          </View>
 
-      <FlatList
-        horizontal
-        data={props.listData}
-        renderItem={({ item }) => <BooksSectionItem item={item} />}
-        // keyExtractor={}
-      />
-    </View>
+          <FlatList
+            horizontal
+            data={data.works}
+            renderItem={({ item }) => (
+              <BooksSectionItem title={item.title} cover_id={item.cover_id} />
+            )}
+            keyExtractor={({ key }) => key}
+          />
+        </View>
+      ) : null}
+    </>
   );
 };
 
