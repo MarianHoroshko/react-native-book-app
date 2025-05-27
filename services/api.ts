@@ -16,3 +16,13 @@ export const fetchBooksBySubject = async (subject: string): Promise<Works> => {
 
   return response.data;
 };
+
+export const fetchBooks = async (query: string): Promise<Docs> => {
+  const response = await axiosInstance
+    .get(`/search.json?q=${query}`)
+    .catch((err) => {
+      throw new Error("Failed to fetch books data.", err);
+    });
+
+  return response.data;
+};
