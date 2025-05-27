@@ -5,9 +5,14 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 type BooksSectionItemProps = {
   title: string;
   cover_id: number;
+  authors: Author[];
 };
 
-const BooksSectionItem = ({ title, cover_id }: BooksSectionItemProps) => {
+const BooksSectionItem = ({
+  title,
+  cover_id,
+  authors,
+}: BooksSectionItemProps) => {
   return (
     <TouchableOpacity className="pr-3">
       {cover_id !== null ? (
@@ -24,9 +29,17 @@ const BooksSectionItem = ({ title, cover_id }: BooksSectionItemProps) => {
         </View>
       )}
 
-      <Text numberOfLines={1}>
+      <Text className="font-bold text-xl" numberOfLines={1}>
         {title.length < 20 ? `${title}` : `${title.substring(0, 17)}...`}
       </Text>
+
+      {authors.map((author, i) => (
+        <Text className="color-slate-600" key={i}>
+          {author.name.length < 20
+            ? `${author.name}`
+            : `${author.name.substring(0, 17)}...`}
+        </Text>
+      ))}
     </TouchableOpacity>
   );
 };

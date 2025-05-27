@@ -36,7 +36,11 @@ const BookSection = (props: { subject: string }) => {
             horizontal
             data={data.works}
             renderItem={({ item }) => (
-              <BooksSectionItem title={item.title} cover_id={item.cover_id} />
+              <BooksSectionItem
+                title={item.title}
+                cover_id={item.cover_id}
+                authors={item.authors}
+              />
             )}
             keyExtractor={({ key }) => key}
           />
