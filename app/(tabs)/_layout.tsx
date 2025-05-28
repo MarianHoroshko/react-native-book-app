@@ -1,5 +1,9 @@
 import TabBarIcon from "@/components/TabBarIcon";
-import { faBookmark, faHome } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBookmark,
+  faHome,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 import { Tabs } from "expo-router";
 
@@ -18,6 +22,17 @@ const _Layout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabBarIcon isFocused={focused} icon={faHome} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: "Search",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon isFocused={focused} icon={faSearch} />
           ),
         }}
       />

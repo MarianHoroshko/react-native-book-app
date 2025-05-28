@@ -19,7 +19,7 @@ export const fetchBooksBySubject = async (subject: string): Promise<Works> => {
 
 export const fetchBooks = async (query: string): Promise<Docs> => {
   const response = await axiosInstance
-    .get(`/search.json?q=${query}`)
+    .get(`/search.json?q=${query}&limit=15`)
     .catch((err) => {
       throw new Error("Failed to fetch books data.", err);
     });

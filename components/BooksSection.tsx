@@ -40,6 +40,7 @@ const BookSection = (props: { subject: string }) => {
                 title={item.title}
                 cover_id={item.cover_id}
                 authors={item.authors}
+                className="pr-3"
               />
             )}
             keyExtractor={({ key }) => key}
