@@ -4,7 +4,14 @@ import { fetchBooks } from "@/services/api";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useEffect, useState } from "react";
-import { FlatList, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const Search = () => {
@@ -51,24 +58,29 @@ const Search = () => {
             marginVertical: 5,
           }}
           ListHeaderComponent={
-            <View className="h-15 m-3 p-1 flex-row bg-slate-100 justify-between align-middle rounded">
-              <TextInput
-                className="w-[80%] h-full pt-3 pb-3 pl-3"
-                placeholder="Search..."
-                value={searchQuery}
-                onChangeText={(text) => setSearchQuery(text)}
-              />
+            <>
+              <View className="h-15 m-3 p-1 flex-row bg-slate-100 justify-between align-middle rounded">
+                <TextInput
+                  className="w-[80%] h-full pt-3 pb-3 pl-3"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChangeText={(text) => setSearchQuery(text)}
+                />
 
-              {searchQuery !== "" ? (
-                <TouchableOpacity className="p-3" onPress={clearSearchQuery}>
-                  <FontAwesomeIcon
-                    icon={faCircleXmark}
-                    color="#a0aec0"
-                    size={18}
-                  />
-                </TouchableOpacity>
-              ) : null}
-            </View>
+                {searchQuery !== "" ? (
+                  <TouchableOpacity className="p-3" onPress={clearSearchQuery}>
+                    <FontAwesomeIcon
+                      icon={faCircleXmark}
+                      color="#a0aec0"
+                      size={18}
+                    />
+                  </TouchableOpacity>
+                ) : null}
+              </View>
+
+              {isLoading ? <ActivityIndicator size="large" /> : null}
+              {error ? <Text>{error.message}</Text> : null}
+            </>
           }
         />
       </SafeAreaView>
