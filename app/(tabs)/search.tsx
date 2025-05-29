@@ -3,6 +3,8 @@ import useFetch from "@/hooks/useFetch";
 import { fetchBooks } from "@/services/api";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { HeaderBackButton } from "@react-navigation/elements";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -59,23 +61,30 @@ const Search = () => {
           }}
           ListHeaderComponent={
             <>
-              <View className="h-15 m-3 p-1 flex-row bg-slate-100 justify-between align-middle rounded">
-                <TextInput
-                  className="w-[80%] h-full pt-3 pb-3 pl-3"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChangeText={(text) => setSearchQuery(text)}
-                />
+              <View className="m-3 flex-row justify-between align-middle">
+                <HeaderBackButton onPress={router.back} />
 
-                {searchQuery !== "" ? (
-                  <TouchableOpacity className="p-3" onPress={clearSearchQuery}>
-                    <FontAwesomeIcon
-                      icon={faCircleXmark}
-                      color="#a0aec0"
-                      size={18}
-                    />
-                  </TouchableOpacity>
-                ) : null}
+                <View className="h-15 w-[85%] flex-row bg-slate-100 justify-between align-middle rounded">
+                  <TextInput
+                    className="w-[80%] h-full pv-3 pl-3"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChangeText={(text) => setSearchQuery(text)}
+                  />
+
+                  {searchQuery !== "" ? (
+                    <TouchableOpacity
+                      className="p-3"
+                      onPress={clearSearchQuery}
+                    >
+                      <FontAwesomeIcon
+                        icon={faCircleXmark}
+                        color="#a0aec0"
+                        size={18}
+                      />
+                    </TouchableOpacity>
+                  ) : null}
+                </View>
               </View>
 
               {isLoading ? <ActivityIndicator size="large" /> : null}
