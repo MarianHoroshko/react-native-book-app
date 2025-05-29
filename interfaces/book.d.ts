@@ -3,4 +3,5 @@ interface Book {
   cover_id: number;
   key: string;
   authors: Author[];
+  cover_edition_key: string;
 }

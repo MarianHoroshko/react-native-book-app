@@ -1,10 +1,12 @@
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 type BooksSectionItemProps = {
   title: string;
   cover_id: number;
+  cover_edition_key: string;
   authors?: Author[];
   authors_name?: string[];
   className?: string;
@@ -13,12 +15,16 @@ type BooksSectionItemProps = {
 const BooksSectionItem = ({
   title,
   cover_id,
+  cover_edition_key,
   authors,
   authors_name,
   className,
 }: BooksSectionItemProps) => {
   return (
-    <TouchableOpacity className={className}>
+    <TouchableOpacity
+      className={className}
+      onPress={() => router.navigate(`/books/${cover_edition_key}`)}
+    >
       {cover_id !== null && cover_id !== undefined ? (
         <Image
           source={{

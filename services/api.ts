@@ -26,3 +26,13 @@ export const fetchBooks = async (query: string): Promise<Docs> => {
 
   return response.data;
 };
+
+export const fetchBookDetails = async (
+  id: string | string[]
+): Promise<BookDetails> => {
+  const response = await axiosInstance.get(`/books/${id}.json`).catch((err) => {
+    throw new Error("Failed to fetch book's data.");
+  });
+
+  return response.data;
+};
