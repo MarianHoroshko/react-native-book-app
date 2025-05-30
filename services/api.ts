@@ -34,5 +34,15 @@ export const fetchBookDetails = async (
     throw new Error("Failed to fetch book's data.");
   });
 
-  return response.data;
+  let bookDetails: BookDetails = { ...response.data };
+
+  // const authorResponse = await axiosInstance
+  //   .get(`/authors/${bookDetails.authors[0].key.split("/")[1]}.json`)
+  //   .catch((err) => {
+  //     throw new Error("Failed to fetch authors data.");
+  //   });
+
+  // bookDetails = { ...bookDetails, authors: [authorResponse.data.name] };
+
+  return bookDetails;
 };

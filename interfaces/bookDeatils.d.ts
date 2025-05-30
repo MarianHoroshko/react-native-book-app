@@ -10,4 +10,6 @@ interface BookDetails {
   title: string;
   publish_date: number;
   copyright_date: number;
+  authors: Author[];
+  subjects: string[];
 }
