@@ -6,12 +6,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const BookDetails = () => {
   const { id } = useLocalSearchParams();
-
-  // console.log(id);
-
   const { data, isLoading, error } = useFetch(() => fetchBookDetails(id));
-
-  // console.log(data);
 
   return (
     <SafeAreaProvider>
@@ -39,10 +34,11 @@ const BookDetails = () => {
                   <Text className=" text-2xl font-bold">{data?.title}</Text>
                   <Text className="color-slate-600">{data?.subtitle}</Text>
 
-                  {/* TODO: display authors */}
-                  {/* {data?.authors.map((author, i) => (
-              <Text key={i}>{author.name}</Text>
-            ))} */}
+                  {data.authors !== undefined && data.authors !== null
+                    ? data?.authors.map((author, i) => (
+                        <Text key={i}>{author.name}</Text>
+                      ))
+                    : null}
                 </View>
               </View>
 

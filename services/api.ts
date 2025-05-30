@@ -34,15 +34,28 @@ export const fetchBookDetails = async (
     throw new Error("Failed to fetch book's data.");
   });
 
-  let bookDetails: BookDetails = { ...response.data };
-
-  // const authorResponse = await axiosInstance
-  //   .get(`/authors/${bookDetails.authors[0].key.split("/")[1]}.json`)
-  //   .catch((err) => {
-  //     throw new Error("Failed to fetch authors data.");
-  //   });
-
-  // bookDetails = { ...bookDetails, authors: [authorResponse.data.name] };
+  const bookDetails: BookDetails = { ...response.data };
+  if (bookDetails.authors !== undefined) {
+    bookDetails.authors = await fetchAuthorsName(bookDetails.authors);
+  }
 
   return bookDetails;
+};
+
+const fetchAuthorsName = async (authors: Author[]): Promise<Author[]> => {
+  const authorsNames: Author[] = [];
+
+  await Promise.all(
+    authors.map(async (author) => {
+      const authorResponse = await axiosInstance
+        .get(`${author.key}.json`)
+        .catch((err) => {
+          throw new Error("Failed to fetch authors data.");
+        });
+
+      authorsNames.push(authorResponse.data);
+    })
+  );
+
+  return authorsNames;
 };
