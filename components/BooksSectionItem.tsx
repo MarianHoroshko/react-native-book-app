@@ -31,7 +31,7 @@ const BooksSectionItem = ({
             uri: `https://covers.openlibrary.org/b/id/${cover_id.toString()}-M.jpg`,
           }}
           className="w-[120px] h-[180px] rounded"
-          resizeMode="cover"
+          resizeMode="stretch"
         />
       ) : (
         <View className="w-[120px] h-[180px] justify-center items-center align-middle bg-slate-100 rounded">
