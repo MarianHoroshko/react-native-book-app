@@ -15,8 +15,8 @@ export default function Index() {
             <Text className="text-3xl font-bold color-primary">book-app</Text>
 
             <Link href="/search" asChild>
-              <TouchableOpacity className="p-2.5 align-middle justify-center bg-emerald-200 border border-emerald-300 rounded-full ">
-                <FontAwesomeIcon icon={faSearch} color="#166533" />
+              <TouchableOpacity className="p-2.5 align-middle justify-center bg-mainblue-200 border border-mainblue-300 rounded-full ">
+                <FontAwesomeIcon icon={faSearch} color="#00628d" />
               </TouchableOpacity>
             </Link>
           </View>

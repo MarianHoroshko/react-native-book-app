@@ -9,7 +9,7 @@ import { Tabs } from "expo-router";
 
 const tabScreenOptions: BottomTabNavigationOptions = {
   tabBarIconStyle: { color: "#052e14" },
-  tabBarActiveTintColor: "#22c55e",
+  tabBarActiveTintColor: "#00bcff",
 };
 
 const _Layout = () => {

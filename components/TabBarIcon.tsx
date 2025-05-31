@@ -12,7 +12,7 @@ const TabBarIcon = (props: TabBarIconProps) => {
       <FontAwesomeIcon
         icon={props.icon}
         size={18}
-        color={props.isFocused ? "#22c55e" : "#052e14"}
+        color={props.isFocused ? "#00bcff" : "#052e14"}
       />
     </>
   );

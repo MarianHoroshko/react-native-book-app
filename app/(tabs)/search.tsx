@@ -61,7 +61,7 @@ const Search = () => {
           }}
           ListHeaderComponent={
             <>
-              <View className="m-3 flex-row justify-between align-middle">
+              <View className="m-3 flex-1 flex-row justify-between align-middle">
                 <HeaderBackButton onPress={router.back} />
 
                 <View className="h-15 w-[85%] flex-row bg-slate-100 justify-between align-middle rounded">
