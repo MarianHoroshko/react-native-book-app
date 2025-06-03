@@ -2,7 +2,7 @@ import BooksSectionItem from "@/components/BooksSectionItem";
 import useFetch from "@/hooks/useFetch";
 import { fetchBooksBySubject } from "@/services/api";
 import { useLocalSearchParams } from "expo-router";
-import { FlatList, Text } from "react-native";
+import { ActivityIndicator, FlatList, Text } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const BooksBySubject = () => {
@@ -19,23 +19,34 @@ const BooksBySubject = () => {
           Subject: {subject}
         </Text>
 
-        <FlatList
-          data={data?.works}
-          renderItem={({ item }) => (
-            <BooksSectionItem
-              title={item.title}
-              cover_id={item.cover_id}
-              cover_edition_key={item.cover_edition_key}
-            />
-          )}
-          keyExtractor={(item) => item.key}
-          numColumns={3}
-          columnWrapperStyle={{
-            justifyContent: "center",
-            gap: 15,
-            marginVertical: 5,
-          }}
-        ></FlatList>
+        {isLoading !== null ? (
+          <ActivityIndicator
+            className="flex-1 justify-center align-middle"
+            size="large"
+          />
+        ) : error !== null ? (
+          <Text className="flex-1 text-center align-middle text-xl">
+            {error.message}
+          </Text>
+        ) : data !== null && data !== undefined ? (
+          <FlatList
+            data={data?.works}
+            renderItem={({ item }) => (
+              <BooksSectionItem
+                title={item.title}
+                cover_id={item.cover_id}
+                cover_edition_key={item.cover_edition_key}
+              />
+            )}
+            keyExtractor={(item) => item.key}
+            numColumns={3}
+            columnWrapperStyle={{
+              justifyContent: "center",
+              gap: 15,
+              marginVertical: 5,
+            }}
+          />
+        ) : null}
       </SafeAreaView>
     </SafeAreaProvider>
   );
