@@ -1,5 +1,6 @@
 import useFetch from "@/hooks/useFetch";
 import { fetchBooksBySubject } from "@/services/api";
+import { router } from "expo-router";
 import {
   ActivityIndicator,
   FlatList,
@@ -27,7 +28,9 @@ const BookSection = (props: { subject: string }) => {
               Books about: {props.subject}
             </Text>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.navigate(`/list/${props.subject}`)}
+            >
               <Text className="text-primary font-bold">Show more</Text>
             </TouchableOpacity>
           </View>

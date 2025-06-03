@@ -7,7 +7,9 @@ const axiosInstance = axios.create({
   },
 });
 
-export const fetchBooksBySubject = async (subject: string): Promise<Works> => {
+export const fetchBooksBySubject = async (
+  subject: string | string[]
+): Promise<Works> => {
   const response = await axiosInstance
     .get(`/subjects/${subject}.json?details=false&limit=5`)
     .catch((err) => {

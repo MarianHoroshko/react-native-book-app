@@ -8,6 +8,8 @@ export default function RootLayout() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
       <Stack.Screen name="books/[id]" options={{ headerTitle: "" }} />
+
+      <Stack.Screen name="list/[subject]" options={{ headerTitle: "" }} />
     </Stack>
   );
 }
