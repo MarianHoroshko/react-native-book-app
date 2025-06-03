@@ -50,6 +50,7 @@ const Search = () => {
               title={item.title}
               cover_id={item.cover_i}
               authors_name={item.author_name}
+              cover_edition_key={item.cover_edition_key}
             />
           )}
           keyExtractor={(item) => item.key}
