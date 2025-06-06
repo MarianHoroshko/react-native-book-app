@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+# 📚 React Native Book App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Book app is a mobile application built with **React Native** and styled using **Tailwind CSS**. It allows users to browse, search, and manage a collection of books with a clean and responsive UI.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+- 🔍 Search and browse books
+- 📖 View book details (title, author, summary, cover image)
+- ❤️ Add books to your favorites
+- 📚 Organize books by categories or genres
+- 🌙 Light and dark mode support
+- ⚡ Fast and responsive UI with Tailwind CSS
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ Tech Stack
 
-In the output, you'll find options to open the app in a
+- **React Native** – Cross-platform mobile development
+- **Tailwind CSS (native wind)** – Utility-first styling
+- **TypeScript** – Strongly typed components
+- **Axios** – Fetching book data from an API (openlibrary.org api)
+- **AsyncStorage** – Local data persistence in the future (e.g., favorites)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🚀 Getting Started
 
-## Get a fresh project
+### Prerequisites
 
-When you're ready, run:
+- Node.js ≥ 14.x
+- Yarn or npm
+- Expo CLI
+
+### Installation
 
 ```bash
-npm run reset-project
-```
+# Clone the repository
+git clone https://github.com/your-username/bookshelf-app.git
+cd bookshelf-app
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+# Install dependencies
+npm install
+# or
+yarn install
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# Start the development server
+npx expo start
